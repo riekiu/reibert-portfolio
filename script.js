@@ -20,7 +20,7 @@ const projectData = {
         features: [
             "Real-time book inventory tracking and management",
             "Member database with borrowing history and analytics",
-            "Issuing books eaesily"
+            "Issuing books easily"
         ]
     },
     pos: {
@@ -457,12 +457,29 @@ function openProjectModal(projectId) {
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
+    // Add scrollable functionality to modal content
+    const modalBody = document.querySelector('.modal-body');
+    modalBody.style.maxHeight = '70vh';
+    modalBody.style.overflowY = 'auto';
+    modalBody.style.paddingRight = '10px';
+    
+    // Custom scrollbar styling
+    modalBody.style.scrollbarWidth = 'thin';
+    modalBody.style.scrollbarColor = 'var(--primary) var(--dark-light)';
+    
     document.addEventListener('keydown', handleEscapeKey);
 }
 
 function closeProjectModal() {
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
+    
+    // Reset modal body styles
+    const modalBody = document.querySelector('.modal-body');
+    modalBody.style.maxHeight = '';
+    modalBody.style.overflowY = '';
+    modalBody.style.paddingRight = '';
+    
     document.removeEventListener('keydown', handleEscapeKey);
 }
 
